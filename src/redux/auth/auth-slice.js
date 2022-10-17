@@ -24,7 +24,13 @@ const authSlice = createSlice({
             state.user = action.payload.user;
             state.user = action.payload.token;
             state.isLoggedIn = true;
-        }
+        },
+        [authOperations.login.fulfilled](state, action){
+            // под капотом IMMER . не мутируется state напрямую, меняется копия state
+            state.user = action.payload.user;
+            state.user = action.payload.token;
+            state.isLoggedIn = true;
+        },
     },
 });
 export const persisteAuthReducer = persistReducer(
