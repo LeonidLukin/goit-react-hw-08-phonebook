@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, fetchContacts } from '../../redux/contactsOperations';
+import { deleteContact } from '../../redux/contactsOperations';
 import Contact from '../Contact';
 import css from './ContactList.module.css';
 import { FaTrash } from "react-icons/fa";
