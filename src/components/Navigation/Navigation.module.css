@@ -1,5 +1,22 @@
-.navBar {
+.wrapper {
     min-width: 500px;
     display: flex;
     justify-content: space-around;
+    margin: 0 0 20px 0;
+    color: wheat;
+}
+
+.navItem {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 4px;
+
+    transition: color 0.3s, background-color 0.3s;
+}
+.navItem:hover {
+    background-color: rgba(117, 230, 255, 0.358);
+}
+
+.welcomeHP {
+    color: rgb(246, 250, 255);
 }

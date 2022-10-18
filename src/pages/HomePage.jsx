@@ -1,7 +1,8 @@
+import css from '../components/Navigation/Navigation.module.css'
 const HomePage = () => {
     return <>
         <div>
-            <h1>Welcome to the HOME PAGE</h1>
+            <h1 className={css.welcomeHP}>Please Login or SignUp...</h1>
         </div>
     </>
 }
