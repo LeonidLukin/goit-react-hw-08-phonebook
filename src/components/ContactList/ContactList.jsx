@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOperations';
+import { deleteContact, fetchContacts } from '../../redux/contactsOperations';
 import Contact from '../Contact';
 import css from './ContactList.module.css';
 import { FaTrash } from "react-icons/fa";
@@ -12,23 +13,21 @@ const getFilteredContacts = (contacts, filter) => {
     );
 }
 export default function ContactList() {
+    const dispatch = useDispatch();
     const { items, error } = useSelector(state => state.root.contacts);
     const filter = useSelector(state => state.root.filter);
-    const dispatch = useDispatch();
-    
-    
 
     const filteredContacts = getFilteredContacts(items,filter)
     
     return (
         <ul>
             {error && <h1>Something's wrong... Try again</h1>}
-            {filteredContacts.map(({ id, name, phone }) => {
+            {filteredContacts.map(({ id, name, number }) => {
                 return (
                     <li className={css.item} key={id}>
                         <Contact
                             name={name}
-                            phone={phone}
+                            number={number}
                             contactId={id}
                         >
                             <FaTrash  onClick={() => dispatch(deleteContact(id))}/>

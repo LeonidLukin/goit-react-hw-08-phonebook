@@ -2,22 +2,21 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { addContact } from '../../redux/contactsOperations';
 import css from './ContactForm.module.css';
 
 export default function ContactForm({ onClose }) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const { items } = useSelector(state => state.root.contacts);
 
   const newContact = {
     name,
-    phone,
+    number,
   };
 
   const onChangeName = e => setName(e.currentTarget.value);
-  const onChangeNumber = e => setPhone(e.currentTarget.value);
+  const onChangeNumber = e => setNumber(e.currentTarget.value);
 
   const dispatch = useDispatch();
 
@@ -31,7 +30,7 @@ export default function ContactForm({ onClose }) {
     if (findName) {
       alert(`${name} is already in contacts`);
       setName('');
-      setPhone('');
+      setNumber('');
       return;
     }
 
@@ -43,7 +42,7 @@ export default function ContactForm({ onClose }) {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -66,7 +65,7 @@ export default function ContactForm({ onClose }) {
         onChange={onChangeNumber}
         type="tel"
         name="number"
-        value={phone}
+        value={number}
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required

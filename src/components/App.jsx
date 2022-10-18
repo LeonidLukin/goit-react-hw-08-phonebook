@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchContacts} from '../redux/contactsOperations'
+import { refreshUser } from 'redux/auth/auth-operations';
 import { BsFillPersonPlusFill } from 'react-icons/bs';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -18,27 +19,17 @@ import ContactsPage from 'pages/ContactsPage';
 import Navigation from './Navigation/Navigation';
 import UserMenu from "./UserMenu";
 import AuthNav from "./Navigation/AuthNav";
-import authSelectors from '../redux/auth/auth-selectors'
-
-
+import authSelectors from '../redux/auth/auth-selectors';
 
 export default function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const dispatch = useDispatch();
-  // const [showModal, setShowModal] = useState(false)
-  // const { items } = useSelector(state => state.root.contacts)
-  // const { isLoading } = useSelector(state => state.root.contacts);
   
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  // const toggleModal = () => {
-  //   setShowModal(prevShowModal => !prevShowModal);
-  // };
-
-  console.log(isLoggedIn);
   return (
     <div className={css.container}>
       <Navigation />

@@ -55,11 +55,8 @@ export const refreshUser = createAsyncThunk(
       const persistToken = state.auth.token;
   
       if (persistToken === null) {
-        console.log('NO token');
         return rejectWithValue();
-        // тут не можем просто return -  возвращаем и записываем undefined, а так прокидываем ошибку
       }
-  
       token.set(persistToken);
   
       try {
@@ -76,6 +73,7 @@ const authOperations = {
     register,
     login,
     logOut,
+    refreshUser,
 };
 
 export default authOperations;

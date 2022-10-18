@@ -5,7 +5,7 @@ import { deleteContact  } from '../../redux/contactsOperations';
 import { FaTrash, FaUserAlt } from "react-icons/fa";
 import css from "./Contact.module.css";
 
-export default function Contact({ name, phone, contactId }) {
+export default function Contact({ name, number, contactId }) {
     const dispatch = useDispatch()
 
     return (
@@ -17,7 +17,7 @@ export default function Contact({ name, phone, contactId }) {
                 <p>{name}</p>
             </div>
             <div className={css.wrapper}>
-                <p className={css.number}>{phone}</p>
+                <p className={css.number}>{number}</p>
                 <button
                     className={css.button}
                     type="button"
@@ -32,5 +32,5 @@ export default function Contact({ name, phone, contactId }) {
 
 Contact.propTypes = {
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
 };
