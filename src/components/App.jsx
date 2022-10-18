@@ -16,11 +16,15 @@ import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
 import ContactsPage from 'pages/ContactsPage';
 import Navigation from './Navigation/Navigation';
-// import Logo from './AppBar/Logo/Logo';
-// import AppBar from './AppBar'
+import UserMenu from "./UserMenu";
+import AuthNav from "./Navigation/AuthNav";
+import authSelectors from '../redux/auth/auth-selectors'
+
 
 
 export default function App() {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   const dispatch = useDispatch();
   // const [showModal, setShowModal] = useState(false)
   // const { items } = useSelector(state => state.root.contacts)
@@ -34,10 +38,11 @@ export default function App() {
   //   setShowModal(prevShowModal => !prevShowModal);
   // };
 
+  console.log(isLoggedIn);
   return (
     <div className={css.container}>
-      {/* <AppBar /> */}
       <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
 
       <Routes >
           <Route path="/goit-react-hw-08-phonebook" element={<HomePage />}></Route>
@@ -45,27 +50,6 @@ export default function App() {
           <Route path="/goit-react-hw-08-phonebook/register" element={<RegisterPage />}></Route>
           <Route path="/goit-react-hw-08-phonebook/contacts" element={<ContactsPage />}></Route>
       </Routes>
-
-      {/* <h1 className={css.title}>
-        Phone<span className={css.title__color}>book</span>
-      </h1>
-      <button className={css.button} type="button" onClick={toggleModal}>
-        <span className={css.button__text}>Add new contact</span>{' '}
-        <BsFillPersonPlusFill size={20} />
-      </button>
-      {showModal && (
-        <Modal onClose={toggleModal} title="add contact">
-          <ContactForm onClose={toggleModal}/>
-        </Modal>
-      )}
-
-      <h2 className={css.subtitle}>Contacts {isLoading && <Loader />}</h2>
-      <Filter />
-      {items.length > 0 ? (
-        <ContactList />
-      ) : (
-        <Message text="So sad, you have no any contacts yet." />
-      )} */}
     </div>
     )
   

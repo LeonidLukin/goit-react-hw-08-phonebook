@@ -5,3 +5,12 @@ export const getIsRefreshing = state => state.auth.isRefreshing;
 export const getName = state => state.auth.user.name;
 
 export const getEmail = state => state.auth.user.email;
+
+const authSelectors = {
+    getIsLoggedIn,
+    getIsRefreshing,
+    getName,
+    getEmail
+}
+
+export default authSelectors;
