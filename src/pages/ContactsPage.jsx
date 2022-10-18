@@ -8,12 +8,18 @@ import Modal from '../components/Modal';
 import ContactList from '../components/ContactList';
 import Message from '../components/Message';
 import { Loader } from '../components/ContactList/Loader.styled';
+import { fetchContacts } from 'redux/contactsOperations';
 
 const ContactsPage = () => {
+    const dispatch = useDispatch();
 
     const [showModal, setShowModal] = useState(false)
     const { items } = useSelector(state => state.root.contacts)
     const { isLoading } = useSelector(state => state.root.contacts);
+
+    useEffect(()=> {
+        dispatch(fetchContacts())
+    }, [dispatch])
 
     const toggleModal = () => {
         setShowModal(prevShowModal => !prevShowModal);

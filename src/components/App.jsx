@@ -20,6 +20,9 @@ import Navigation from './Navigation/Navigation';
 import UserMenu from "./UserMenu";
 import AuthNav from "./Navigation/AuthNav";
 import authSelectors from '../redux/auth/auth-selectors';
+import { PrivateRoute } from 'redux/PrivateRoute';
+import { PublicRoute } from 'redux/PublicRoute';
+
 
 export default function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -36,10 +39,10 @@ export default function App() {
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
 
       <Routes >
-          <Route path="/goit-react-hw-08-phonebook" element={<HomePage />}></Route>
-          <Route path="/goit-react-hw-08-phonebook/login" element={<LoginPage />}></Route>
-          <Route path="/goit-react-hw-08-phonebook/register" element={<RegisterPage />}></Route>
-          <Route path="/goit-react-hw-08-phonebook/contacts" element={<ContactsPage />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/login" element={<PublicRoute restricted><LoginPage /></PublicRoute>}></Route>
+          <Route path="/register" element={<PublicRoute restricted><RegisterPage /></PublicRoute>}></Route>
+          <Route path="/contacts" element={<PrivateRoute><ContactsPage/></PrivateRoute>}></Route>
       </Routes>
     </div>
     )
