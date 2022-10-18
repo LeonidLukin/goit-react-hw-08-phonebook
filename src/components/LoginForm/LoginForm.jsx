@@ -1,18 +1,9 @@
 import { Formik, Form, ErrorMessage } from 'formik';
-// import useLoginUser from 'hooks/useLoginUser';
 import { useDispatch } from 'react-redux';
 import { userLoginSchema } from 'utilities/validation';
 import authOperations from '../../redux/auth/auth-operations';
 
 function LoginForm() {
-    // const { onSubmitForm } = useLoginUser();
-
-    // const navigate = useNavigate();
-    
-    // const onSubmitForm = ({ email, password }) => {
-      //   dispatch(operations.loginUser({ email, password }));
-    //   navigate('/contacts');
-    // };
     const dispatch = useDispatch();
     
     const handleSubmit = ({ email, password }, actions) => {

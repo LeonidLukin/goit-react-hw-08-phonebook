@@ -16,10 +16,6 @@ export default function ContactList() {
     const { items, error } = useSelector(state => state.root.contacts);
     const filter = useSelector(state => state.root.filter);
 
-    // useEffect(()=> {
-    //     dispatch(fetchContacts())
-    // }, [dispatch])
-
     const filteredContacts = getFilteredContacts(items,filter)
     
     return (

@@ -1,12 +1,10 @@
 import { Formik, Form, ErrorMessage } from 'formik';
-import { Title, Label, TitleInput, Input, Button } from './RegisterForm.styled';
-// import useRegisterUser from '../../hooks/useRegisterUser';
+import { Title, Label, TitleInput, Input } from './RegisterForm.styled';
 import { userRegisterSchema } from 'utilities/validation';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 
 function RegisterForm() {
-  // const { onSubmitForm } = useRegisterUser();
   
   const dispatch = useDispatch();
 
